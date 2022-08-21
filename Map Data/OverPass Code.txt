@@ -1,0 +1,36 @@
+/*
+Run these snippets in http://overpass-turbo.eu/ to generate data
+*/
+
+
+/*
+1) Show buildings:
+*/
+[out:json][timeout:25];
+// gather results
+(
+  way["building"]({{bbox}});
+  relation["building"]({{bbox}});
+);
+// print results
+out body;
+>;
+out skel qt;
+
+
+
+/*
+2) Show green area:
+*/
+[out:json][timeout:25];
+// gather results
+(
+  way["leisure"="park"]({{bbox}});
+  relation["leisure"="park"]({{bbox}});
+  way["leisure"="garden"]({{bbox}});
+  relation["leisure"="garden"]({{bbox}});
+);
+// print results
+out body;
+>;
+out skel qt;
